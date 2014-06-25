@@ -29,7 +29,7 @@ Puppet::Type.newtype(:apt_key) do
     desc 'The ID of the key you want to manage.'
     # GPG key ID's should be either 32-bit (short) or 64-bit (long) key ID's
     # and may start with the optional 0x
-    newvalues(/\A(0x)?[0-9a-fA-F]{8}\Z/, /\A(0x)?[0-9a-fA-F]{16}\Z/)
+    newvalues(/\A(0x)?[0-9a-fA-F]{8}\Z/, /\A(0x)?[0-9a-fA-F]{16}\Z/, /\A(0x)?[0-9a-fA-F]{16}\Z/)
     munge do |value|
       if value.start_with?('0x')
         id = value.partition('0x').last.upcase
