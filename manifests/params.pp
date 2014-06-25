@@ -48,6 +48,16 @@ class apt::params {
         }
       }
     }
+    'LinuxMint': {
+      case $::lsbdistcodename {
+        default: {
+          $backports_location = 'http://packages.linuxmint.com'
+          $ppa_options        = '-y'
+          $legacy_origin      = true
+          $origins            = ['${distro_id}:${distro_codename}-security']
+        }
+      }
+    }
     default: {
       fail("Unsupported lsbdistid (${::lsbdistid})")
     }
